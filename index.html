@@ -1,0 +1,2924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>FIFA | Partnership | Kia Global Brand Site</title>
+    <style>
+        /* ─── BASE ─────────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        img,
+        video {
+            display: block;
+            max-width: 100%
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        ::-webkit-scrollbar {
+            width: 3px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a
+        }
+
+        /* ─── NAV ──────────────────────────────────────────── */
+        #nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 500;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            background: transparent;
+            transition: background .3s, box-shadow .3s;
+        }
+
+        #nav.solid {
+            background: #fff;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, .08)
+        }
+
+        #nav.solid .nav-link {
+            color: #1a1a1a
+        }
+
+        #nav.solid .nav-logo path {
+            fill: #1a1a1a
+        }
+
+        .nav-logo {
+            width: 52px;
+            height: auto
+        }
+
+        .nav-logo path {
+            fill: #fff;
+            transition: fill .3s
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 40px
+        }
+
+        .nav-link {
+            font-size: .88rem;
+            letter-spacing: .02em;
+            color: #fff;
+            position: relative;
+            padding: 4px 0;
+            transition: color .3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transition: transform .3s;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1)
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px
+        }
+
+        .nav-lang {
+            font-size: .82rem;
+            color: #fff;
+            cursor: pointer;
+            transition: color .3s
+        }
+
+        #nav.solid .nav-lang {
+            color: #1a1a1a
+        }
+
+        .nav-search {
+            width: 20px;
+            height: 20px;
+            cursor: pointer
+        }
+
+        .nav-search path {
+            fill: #fff;
+            transition: fill .3s
+        }
+
+        #nav.solid .nav-search path {
+            fill: #1a1a1a
+        }
+
+        /* ─── HERO ─────────────────────────────────────────── */
+        #hero {
+            position: relative;
+            height: 100vh;
+            min-height: 640px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        #hero-video,
+        #hero-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #hero-img {
+            display: none
+        }
+
+        .hero-grad {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, .15) 0%, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .4) 100%);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            padding: 160px 60px 0;
+        }
+
+        .hero-eyebrow {
+            font-size: .78rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .85);
+            margin-bottom: 12px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp .6s .3s forwards;
+        }
+
+        .hero-h1 {
+            font-size: clamp(4rem, 8vw, 7.5rem);
+            font-weight: 700;
+            line-height: .95;
+            letter-spacing: -.03em;
+            color: #fff;
+            margin-bottom: 18px;
+            opacity: 0;
+            transform: translateY(28px);
+            animation: fadeUp .7s .5s forwards;
+        }
+
+        .hero-tagline {
+            font-size: clamp(.9rem, 1.3vw, 1.05rem);
+            color: rgba(255, 255, 255, .9);
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fadeUp .6s .7s forwards;
+        }
+
+        /* ─── WHY KIA — full bleed stadium image + text overlay ─── */
+        #why {
+            position: relative;
+            min-height: 700px;
+            overflow: hidden;
+            width: 100%;
+            background: url('./assets/web/01-kv/fifa-hero-pc.webp') center center / cover no-repeat;
+        }
+
+        #why::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, .8) 100%);
+            pointer-events: none;
+        }
+
+        .why {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1360px;
+            margin: 0 auto;
+            min-height: 700px;
+            display: grid;
+            grid-template-columns: minmax(300px, 500px) minmax(400px, 1fr);
+            gap: 60px;
+            align-items: center;
+            padding: 0 60px;
+        }
+
+        .why-left,
+        .why-right {
+            position: relative;
+        }
+
+        .why-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-label {
+            display: inline-flex;
+            margin-bottom: 22px;
+            font-size: .75rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .75);
+        }
+
+        .why-h2 {
+            font-size: clamp(2.4rem, 4vw, 4.4rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 24px;
+            line-height: 1.05;
+        }
+
+        .why-body {
+            font-size: clamp(1rem, 1.1vw, 1.05rem);
+            color: rgba(255, 255, 255, .92);
+            line-height: 1.95;
+        }
+
+        .why-body p+p {
+            margin-top: 1.3rem
+        }
+
+        .why-right {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-right::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .6));
+            pointer-events: none;
+        }
+
+        .why-right-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 540px;
+            padding: 60px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 20px;
+        }
+
+        .why-right-inner p {
+            margin: 0
+        }
+
+        .why-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            z-index: 1;
+            text-align: center;
+            color: rgba(255, 255, 255, .1);
+            font-size: clamp(8rem, 14vw, 12rem);
+            font-weight: 900;
+            letter-spacing: -.05em;
+            opacity: 0;
+            transition: opacity .8s ease, transform .8s ease;
+            pointer-events: none;
+        }
+
+        .why-logo.on {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .why-logo span {
+            display: inline-block;
+            margin: 0 0.4rem;
+        }
+
+        /* ─── POWER BLOCK — video bg with blur + text overlay ── */
+        #power {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #040506;
+        }
+
+        #power .power-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(18px) brightness(.55);
+            transform: scale(1.05);
+        }
+
+        #power .power-dark-layer {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .7);
+            opacity: 0;
+            transition: opacity .8s ease;
+        }
+
+        #power.visible .power-dark-layer {
+            opacity: 1;
+        }
+
+        .power-content {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            padding: 60px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity .85s cubic-bezier(.22, 1, .36, 1), transform .85s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        #power.visible .power-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .power-h2 {
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 32px;
+            line-height: 1.15;
+            letter-spacing: -.01em;
+        }
+
+        .power-body {
+            font-size: clamp(.95rem, 1.2vw, 1.08rem);
+            color: rgba(255, 255, 255, .9);
+            line-height: 1.95;
+            font-weight: 400;
+        }
+
+        .power-body p+p {
+            margin-top: 1.6rem
+        }
+
+        /* ─── PINNED KIA × FIFA PANELS ───────────────────────── */
+        .kia-scroll-driver {
+            height: 300vh;
+            position: relative
+        }
+
+        .kia-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden
+        }
+
+        .kia-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('./assets/web/01-kv/fifa-hero-pc.webp');
+            background-size: cover;
+            background-position: center;
+            z-index: 0
+        }
+
+        .kia-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .72)
+        }
+
+        .kia-panel {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .6s ease;
+            will-change: opacity
+        }
+
+        .kia-panel.active {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .panel-quote {
+            text-align: center;
+            padding: 0 40px;
+            max-width: 900px
+        }
+
+        .panel-quote__headline {
+            font-size: clamp(22px, 3vw, 36px);
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -.01em;
+            line-height: 1.3;
+            margin-bottom: 28px
+        }
+
+        .panel-quote__body {
+            font-size: clamp(14px, 1.5vw, 18px);
+            color: rgba(255, 255, 255, .65);
+            line-height: 1.9
+        }
+
+        .panel-why {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center
+        }
+
+        .panel-why__title {
+            font-size: clamp(24px, 3.5vw, 44px);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -.02em;
+            line-height: 1.2
+        }
+
+        .panel-why__body {
+            font-size: clamp(13px, 1.2vw, 16px);
+            color: rgba(255, 255, 255, .7);
+            line-height: 1.85
+        }
+
+        .panel-logos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px
+        }
+
+        .panel-logos__row {
+            display: flex;
+            align-items: center;
+            gap: 0
+        }
+
+        .panel-logos__fifa {
+            font-size: clamp(64px, 10vw, 130px);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -2px;
+            line-height: 1;
+            font-style: italic
+        }
+
+        .panel-logos__divider {
+            width: 1px;
+            height: clamp(80px, 12vw, 160px);
+            background: rgba(255, 255, 255, .5);
+            margin: 0 40px;
+            flex-shrink: 0
+        }
+
+        .panel-logos__kia {
+            height: clamp(50px, 8vw, 100px);
+            width: auto
+        }
+
+        .panel-logos__kia svg {
+            height: 100%;
+            width: auto;
+            fill: #fff
+        }
+
+        .panel-logos__label {
+            font-size: clamp(11px, 1.2vw, 14px);
+            font-weight: 600;
+            letter-spacing: .25em;
+            color: rgba(255, 255, 255, .75);
+            text-transform: uppercase
+        }
+
+        .kia-dots {
+            position: fixed;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100
+        }
+
+        .kia-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .3);
+            transition: background .3s, transform .3s
+        }
+
+        .kia-dot.active {
+            background: #fff;
+            transform: scale(1.4)
+        }
+
+        /* ===== JOURNEY SECTION ===== */
+        .journey-section {
+            padding: 80px 24px;
+            background: #000;
+        }
+
+        .journey-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            min-height: 900px;
+        }
+
+        /* Background */
+
+        .journey-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .journey-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.03);
+        }
+
+        /* Overlay */
+
+        .journey-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg,
+                    rgba(255, 255, 255, .88) 0%,
+                    rgba(255, 255, 255, .45) 28%,
+                    rgba(255, 255, 255, .05) 60%,
+                    rgba(255, 255, 255, 0) 100%);
+        }
+
+        /* Content */
+
+        .journey-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 48px;
+            padding: 110px 90px;
+            min-height: auto;
+        }
+
+        /* Text wrapper to constrain text, gallery remains full */
+
+        .journey-text-wrapper {
+            width: 100%;
+        }
+
+        /* Left Text */
+
+        .journey-text {
+            max-width: 520px;
+        }
+
+        .journey-text h2 {
+            font-size: 48px;
+            line-height: 1.08;
+            font-weight: 500;
+            color: #111;
+            letter-spacing: -0.04em;
+            margin-bottom: 28px;
+        }
+
+        .journey-text p {
+            font-size: 16px;
+            line-height: 1.85;
+            color: #4b4f58;
+            font-weight: 400;
+            max-width: 640px;
+        }
+
+        /* Horizontal Marquee Gallery */
+
+        .journey-gallery {
+            overflow: hidden;
+            width: calc(100% + 180px);
+            margin-left: -90px;
+            margin-right: -90px;
+            padding: 20px 90px 20px 90px;
+        }
+
+        .journey-marquee-track {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            animation: journeyMarquee 32s linear infinite;
+        }
+
+        .journey-marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .gallery-item {
+            position: relative;
+            flex: 0 0 auto;
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .18);
+            transition: transform .35s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .item-1 {
+            width: 420px;
+            height: 340px;
+        }
+
+        .item-2 {
+            width: 320px;
+            height: 300px;
+        }
+
+        .item-3 {
+            width: 240px;
+            height: 380px;
+        }
+
+        .item-4 {
+            width: 500px;
+            height: 340px;
+        }
+
+        .item-5 {
+            width: 280px;
+            height: 320px;
+        }
+
+        .item-6 {
+            width: 360px;
+            height: 300px;
+        }
+
+        @keyframes journeyMarquee {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        /* Responsive */
+
+        @media(max-width:1200px) {
+
+            .journey-content {
+                padding: 80px 60px;
+            }
+
+            .journey-gallery {
+                width: calc(100% + 120px);
+                margin-left: -60px;
+                margin-right: -60px;
+                padding: 20px 60px;
+            }
+
+        }
+
+        @media(max-width:768px) {
+
+            .journey-section {
+                padding: 20px;
+            }
+
+            .journey-content {
+                padding: 60px 30px;
+            }
+
+            .journey-text h2 {
+                font-size: 42px;
+            }
+
+            .journey-text p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+
+            .journey-gallery {
+                width: calc(100% + 60px);
+                margin-left: -30px;
+                margin-right: -30px;
+                padding: 20px 30px;
+                gap: 16px;
+            }
+
+            .gallery-item {
+                min-width: 220px;
+            }
+
+            .item-1 {
+                width: 320px;
+                height: 240px;
+            }
+
+            .item-2 {
+                width: 280px;
+                height: 240px;
+            }
+
+            .item-3 {
+                width: 220px;
+                height: 260px;
+            }
+
+            .item-4 {
+                width: 340px;
+                height: 260px;
+            }
+
+            .item-5 {
+                width: 240px;
+                height: 240px;
+            }
+
+            .item-6 {
+                width: 280px;
+                height: 240px;
+            }
+
+        }
+
+        /* ===== INSPIRING MOMENTS ===== */
+
+        .moments-section {
+            background: #f3f3f3;
+            padding: 140px 48px;
+        }
+
+        .moments-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+
+        .moments-header {
+            margin-bottom: 110px;
+        }
+
+        .moments-header h2 {
+            font-size: 72px;
+            line-height: 1;
+            letter-spacing: -0.06em;
+            font-weight: 500;
+            color: #111;
+        }
+
+        /* Blocks */
+
+        .moments-block {
+            margin-bottom: 110px;
+        }
+
+        .block-heading {
+            margin-bottom: 60px;
+            max-width: 560px;
+        }
+
+        .block-heading h3 {
+            font-size: 42px;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            font-weight: 500;
+            color: #111;
+            margin-bottom: 24px;
+        }
+
+        .block-heading p {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #5d636d;
+        }
+
+        /* Grid */
+
+        .moments-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        /* Cards */
+
+        .moment-card {
+            transition:
+                transform .7s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .moment-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Image */
+
+        .moment-image {
+            border-radius: 22px;
+            overflow: hidden;
+            margin-bottom: 28px;
+            background: #ddd;
+        }
+
+        .moment-image img {
+            width: 100%;
+            height: 400px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            transition:
+                transform 1.2s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .moment-card:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Content */
+
+        .moment-content h4 {
+            font-size: 22px;
+            line-height: 1.2;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            color: #111;
+            margin-bottom: 12px;
+        }
+
+        .moment-content p {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #5d636d;
+            max-width: 92%;
+        }
+
+        /* First Block Left Layout */
+
+        .moments-block:first-of-type {
+            padding-left: 0;
+        }
+
+        .moments-block:first-of-type .moments-grid {
+            display: flex;
+            flex-direction: column;
+            max-width: 520px;
+        }
+
+        /* Divider */
+
+        .moments-divider {
+            width: 100%;
+            height: 1px;
+            background: #d8d8d8;
+            margin: 0 0 110px;
+        }
+
+        /* Offset Layout */
+
+        .moments-block {
+            padding-right: 32%;
+        }
+
+        .moments-block:first-of-type {
+            padding-left: 0;
+            padding-right: 32%;
+        }
+
+        .moments-block.second-block {
+            padding-left: 32%;
+            padding-right: 0;
+        }
+
+        /* Responsive */
+
+        @media(max-width:1200px) {
+
+            .moments-header h2 {
+                font-size: 56px;
+            }
+
+            .block-heading h3 {
+                font-size: 34px;
+            }
+
+            .moment-image img {
+                height: 580px;
+            }
+
+        }
+
+        @media(max-width:900px) {
+
+            .moments-section {
+                padding: 100px 24px;
+            }
+
+            .moments-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .moments-block {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .moments-header {
+                margin-bottom: 80px;
+            }
+
+            .moments-header h2 {
+                font-size: 46px;
+            }
+
+            .block-heading {
+                margin-bottom: 42px;
+            }
+
+            .block-heading h3 {
+                font-size: 30px;
+            }
+
+            .block-heading p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+
+            .moment-image img {
+                height: 460px;
+            }
+
+            .moment-content h4 {
+                font-size: 24px;
+            }
+
+            .moment-content p {
+                font-size: 15px;
+                line-height: 1.8;
+                max-width: 100%;
+            }
+
+        }
+
+        /* ─── TOGETHER TOWARD INSPIRATION — center carousel ───────── */
+        #tournaments {
+            width: 100%;
+            background-color: #ffffff;
+            position: relative;
+            padding: 5rem 0 6rem;
+            overflow-x: clip;
+        }
+
+        .tournaments-card {
+            width: min(100%, 1100px);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .tc-title {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 550;
+            letter-spacing: -.01em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #111111;
+            text-align: center;
+        }
+
+        .tc-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #2c2c2c;
+            max-width: 700px;
+            margin: 0 auto 3.2rem;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 2rem 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-wrapper {
+            overflow: hidden;
+            width: 100%;
+            padding: 20px 0 30px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2.5rem;
+            transition: transform .65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+            align-items: center;
+        }
+
+        .logo-card {
+            flex: 0 0 auto;
+            width: 220px;
+            transition: all .4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            filter: grayscale(.5) brightness(.95);
+            opacity: .55;
+            transform: scale(.85);
+            cursor: pointer;
+            border-radius: 28px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .logo-img {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-img img {
+            max-width: 160px;
+            max-height: 120px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: all .3s;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .08));
+        }
+
+        .logo-card.center-active {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
+            transform: scale(1.35);
+            background: radial-gradient(ellipse at 30% 40%, rgba(255, 200, 50, .1), rgba(255, 255, 245, 0));
+            box-shadow: none;
+            border: none;
+            border-radius: 36px;
+        }
+
+        .logo-card.center-active .logo-img img {
+            filter: drop-shadow(0 12px 20px rgba(0, 0, 0, .15)) brightness(1.02);
+            transform: scale(1.05);
+            max-width: 180px;
+            max-height: 140px;
+        }
+
+        .logo-card:hover:not(.center-active) {
+            transform: scale(.92);
+            filter: grayscale(.2) brightness(.98);
+            opacity: .7;
+            background: rgba(245, 245, 245, .7);
+            border-radius: 28px;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(30, 30, 40, .9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 160, 50, .8);
+            width: 52px;
+            height: 52px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all .2s ease;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .12);
+            padding: 0;
+            line-height: 1;
+        }
+
+        .nav-btn span {
+            display: inline-block;
+            font-size: 38px;
+            font-weight: 400;
+            color: #FFC107;
+            transition: color .2s ease;
+            line-height: 1;
+            margin-top: -2px;
+        }
+
+        .nav-btn:hover {
+            background: #FFC107;
+            border-color: #fff;
+        }
+
+        .nav-btn:hover span {
+            color: #1e1e1e;
+        }
+
+        .nav-left {
+            left: -8px;
+        }
+
+        .nav-right {
+            right: -8px;
+        }
+
+        .active-label {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 20px;
+            font-weight: 620;
+            letter-spacing: -.2px;
+            background: transparent;
+            color: #111111;
+            padding: .4rem .8rem;
+            border: none;
+            display: inline-block;
+            width: auto;
+            border-radius: 999px;
+        }
+
+        .label-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        @media(max-width:1100px) {
+            .logo-card {
+                width: 190px;
+            }
+
+            .logo-img img {
+                max-width: 140px;
+                max-height: 105px;
+            }
+
+            .logo-card.center-active {
+                transform: scale(1.3);
+            }
+
+            .logo-card.center-active .logo-img img {
+                max-width: 160px;
+                max-height: 125px;
+            }
+        }
+
+        @media(max-width:900px) {
+            .tournaments-card {
+                padding: 0 1.5rem;
+            }
+
+            .logo-card {
+                width: 170px;
+            }
+
+            .logo-card.center-active {
+                transform: scale(1.25);
+            }
+
+            .logo-img img {
+                max-width: 125px;
+                max-height: 95px;
+            }
+
+            .nav-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            .nav-btn span {
+                font-size: 32px;
+            }
+
+            .nav-left {
+                left: -5px;
+            }
+
+            .nav-right {
+                right: -5px;
+            }
+
+            .active-label {
+                font-size: 1.35rem;
+            }
+        }
+
+        @media(max-width:640px) {
+            .logo-card {
+                width: 150px;
+            }
+
+            .logo-card.center-active {
+                transform: scale(1.2);
+            }
+
+            .carousel-track {
+                gap: 1.5rem;
+            }
+
+            .logo-img img {
+                max-width: 110px;
+                max-height: 85px;
+            }
+
+            .nav-btn {
+                width: 38px;
+                height: 38px;
+            }
+
+            .nav-btn span {
+                font-size: 28px;
+            }
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tournaments-card {
+            animation: fadeUp .5s ease-out;
+        }
+
+        button {
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .logo-card:focus-visible {
+            outline: 2px solid #F7B32B;
+            outline-offset: 4px;
+            border-radius: 24px;
+        }
+
+        /* ─── OMBC — dark rounded card ───────────────────────── */
+        #ombc {
+            background: #f5f5f5;
+            padding: 0 40px 80px;
+        }
+
+        .ombc-card {
+            background: #2a2a2a;
+            border-radius: 20px;
+            max-width: 1360px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        @media(max-width:900px) {
+            .ombc-card {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .ombc-left {
+            padding: 70px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .ombc-cat {
+            font-size: .68rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .45);
+            margin-bottom: 10px
+        }
+
+        .ombc-h2 {
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.15
+        }
+
+        .ombc-body {
+            font-size: .88rem;
+            color: rgba(255, 255, 255, .58);
+            line-height: 1.85;
+            margin-bottom: 32px;
+            max-width: 420px
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1.5px solid rgba(255, 255, 255, .3);
+            color: #fff;
+            font-size: .82rem;
+            letter-spacing: .08em;
+            padding: 12px 28px;
+            border-radius: 6px;
+            transition: background .25s, border-color .25s, gap .25s;
+            width: fit-content;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, .1);
+            border-color: rgba(255, 255, 255, .6);
+            gap: 16px
+        }
+
+        .ombc-right {
+            overflow: hidden
+        }
+
+        .ombc-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform .7s
+        }
+
+        .ombc-card:hover .ombc-right img {
+            transform: scale(1.04)
+        }
+
+        /* ─── OUTRO — big stadium + left text ───────────────── */
+        #outro {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            overflow: hidden;
+        }
+
+        .outro-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+        }
+
+        /* text sits on top-left, stadium fills the rest */
+        .outro-content {
+            position: relative;
+            z-index: 2;
+            padding: 80px 60px;
+            max-width: 620px;
+        }
+
+        .outro-quote {
+            font-size: clamp(.9rem, 1.3vw, 1.05rem);
+            color: rgba(255, 255, 255, .8);
+            line-height: 1.85;
+            margin-bottom: 28px;
+        }
+
+        .outro-big {
+            font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        /* ─── RELATED ───────────────────────────────────────── */
+        #related {
+            background: #000;
+            padding: 30px;
+        }
+
+        .rel-inner {
+            max-width: 1360px;
+            margin: 0 auto;
+            background: #1f1f1f;
+            border-radius: 20px;
+            padding: 100px 70px;
+        }
+
+        .rel-label {
+            font-size: .68rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .4);
+            margin-bottom: 30px;
+        }
+
+        .rel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px
+        }
+
+        @media(max-width:900px) {
+            .rel-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .rel-card {
+            display: block;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .rel-card:hover {
+            transform: translateY(-6px)
+        }
+
+        .rel-card-img {
+            height: 220px;
+            overflow: hidden
+        }
+
+        .rel-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s, filter .4s;
+            filter: brightness(.85)
+        }
+
+        .rel-card:hover .rel-card-img img {
+            transform: scale(1.05);
+            filter: brightness(1)
+        }
+
+        .rel-card-body {
+            padding: 18px 4px 8px
+        }
+
+        .rel-card-cat {
+            font-size: .65rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .4);
+            margin-bottom: 6px
+        }
+
+        .rel-card-title {
+            font-size: .9rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .9);
+            line-height: 1.45
+        }
+
+        /* ─── FOOTER ────────────────────────────────────────── */
+        footer {
+            background: #000;
+            padding: 60px 60px 40px;
+            color: rgba(255, 255, 255, .5);
+        }
+
+        .footer-inner {
+            max-width: 1360px;
+            margin: 0 auto
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr repeat(4, auto);
+            gap: 60px;
+            margin-bottom: 50px
+        }
+
+        .footer-logo {
+            width: 70px
+        }
+
+        .footer-logo path {
+            fill: #fff
+        }
+
+        .footer-col-title {
+            font-size: .72rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .4);
+            margin-bottom: 18px
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .footer-links a {
+            font-size: .88rem;
+            color: rgba(255, 255, 255, .7);
+            transition: color .2s
+        }
+
+        .footer-links a:hover {
+            color: #fff
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, .1);
+            margin-bottom: 28px
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color .2s;
+        }
+
+        .footer-social a:hover {
+            border-color: rgba(255, 255, 255, .6)
+        }
+
+        .footer-social svg {
+            width: 16px;
+            height: 16px;
+            fill: rgba(255, 255, 255, .7)
+        }
+
+        .footer-legal {
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .3);
+            line-height: 1.6;
+            margin-top: 24px
+        }
+
+        /* ─── SCROLL REVEAL ─────────────────────────────────── */
+        .r {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity .85s cubic-bezier(.22, 1, .36, 1), transform .85s cubic-bezier(.22, 1, .36, 1)
+        }
+
+        .r.on {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .rl {
+            opacity: 0;
+            transform: translateX(-36px);
+            transition: opacity .85s cubic-bezier(.22, 1, .36, 1), transform .85s cubic-bezier(.22, 1, .36, 1)
+        }
+
+        .rl.on {
+            opacity: 1;
+            transform: translateX(0)
+        }
+
+        .rr {
+            opacity: 0;
+            transform: translateX(36px);
+            transition: opacity .85s cubic-bezier(.22, 1, .36, 1), transform .85s cubic-bezier(.22, 1, .36, 1)
+        }
+
+        .rr.on {
+            opacity: 1;
+            transform: translateX(0)
+        }
+
+        .d1 {
+            transition-delay: .1s
+        }
+
+        .d2 {
+            transition-delay: .2s
+        }
+
+        .d3 {
+            transition-delay: .3s
+        }
+
+        .d4 {
+            transition-delay: .4s
+        }
+
+        /* ─── KEYFRAMES ─────────────────────────────────────── */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes mq {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        /* scroll-to-top btn */
+        #top-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 400;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .45);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity .3s, background .2s;
+        }
+
+        #top-btn.show {
+            opacity: 1
+        }
+
+        #top-btn:hover {
+            background: rgba(0, 0, 0, .7)
+        }
+
+        #top-btn svg {
+            fill: #fff;
+            width: 18px
+        }
+
+        /* ─── MOBILE RESPONSIVE ADJUSTMENTS ─────────────────── */
+        @media (max-width: 900px) {
+            #nav {
+                padding: 0 16px;
+                height: 56px
+            }
+
+            .nav-center {
+                gap: 16px
+            }
+
+            .hero-h1 {
+                font-size: clamp(2.4rem, 8vw, 5rem)
+            }
+
+            #hero {
+                min-height: 56vh
+            }
+
+            .hero-text {
+                padding: 100px 20px 0
+            }
+
+            .why {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 0 24px;
+                min-height: auto
+            }
+
+            .why-right-inner {
+                padding: 24px
+            }
+
+            #power {
+                min-height: 56vh
+            }
+
+            .power-content {
+                padding: 30px;
+                max-width: 520px
+            }
+
+            .tournaments-card {
+                padding: 0 1rem;
+                width: 100%;
+                max-width: 720px
+            }
+
+            .logo-card {
+                width: 160px
+            }
+
+            .logo-card.center-active {
+                transform: scale(1.2)
+            }
+
+            .carousel-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 20px 14px 30px
+            }
+
+            .carousel-track {
+                gap: 1.25rem
+            }
+
+            .panel-why {
+                padding: 0 20px;
+                grid-template-columns: 1fr
+            }
+
+            .kia-dots {
+                right: 12px
+            }
+
+            .rel-inner {
+                padding: 0 12px
+            }
+
+            .rel-grid {
+                gap: 12px
+            }
+
+            footer {
+                padding: 40px 20px
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr
+            }
+
+            /* Moments section adjustments */
+            .moments-section {
+                padding: 50px 16px 24px
+            }
+
+            .moments-container {
+                max-width: 100%
+            }
+
+            .moments-block {
+                padding-left: 0 !important;
+                padding-right: 0 !important
+            }
+
+            .moments-block.second-block {
+                padding-left: 0 !important;
+                padding-right: 0 !important
+            }
+
+            .moments-block.second-block .block-heading {
+                margin-bottom: 18px;
+                padding: 0
+            }
+
+            .block-heading h3 {
+                font-size: 26px
+            }
+
+            .block-heading p {
+                font-size: 15px
+            }
+
+            .moments-grid {
+                gap: 18px
+            }
+
+            .moment-image img {
+                height: auto
+            }
+
+            .moment-content h4 {
+                font-size: 20px
+            }
+
+            .moment-content p {
+                font-size: 14px
+            }
+
+            /* Stay Inspired mobile styling */
+            .rel-label {
+                font-size: 1rem;
+                text-align: center;
+                margin-bottom: 20px;
+                display: block
+            }
+
+            /* Active tournament label smaller padding on tablet */
+            .active-label {
+                padding: .25rem .6rem;
+                font-size: 18px
+            }
+
+            /* OMBC adjustments */
+            .ombc-left {
+                padding: 40px 24px
+            }
+
+            .ombc-h2 {
+                font-size: 1.4rem
+            }
+
+            .ombc-body {
+                font-size: .95rem;
+                max-width: 100%
+            }
+
+            .ombc-right img {
+                height: auto
+            }
+        }
+
+        @media (max-width: 640px) {
+            #nav {
+                height: auto;
+                padding: 12px 12px 10px;
+                align-items: flex-start
+            }
+
+            .nav-center {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                overflow-x: auto;
+                max-width: 100%
+            }
+
+            .nav-link {
+                font-size: .8rem;
+                white-space: nowrap
+            }
+
+            .hero-h1 {
+                font-size: clamp(2rem, 10vw, 3.2rem)
+            }
+
+            #hero {
+                min-height: 50vh
+            }
+
+            .hero-text {
+                padding: 80px 14px 0
+            }
+
+            .why-right-inner {
+                padding: 18px
+            }
+
+            .logo-card {
+                width: 130px
+            }
+
+            .logo-card.center-active {
+                transform: scale(1.12)
+            }
+
+            .carousel-wrapper {
+                overflow: hidden;
+                padding: 18px 12px 28px
+            }
+
+            .logo-img img {
+                max-width: 90px;
+                max-height: 70px
+            }
+
+            .tournaments-card {
+                max-width: 92%;
+                padding: 0 1rem
+            }
+
+            .panel-logos__fifa {
+                font-size: clamp(40px, 12vw, 80px)
+            }
+
+            .panel-logos__divider {
+                margin: 0 18px;
+                height: 80px
+            }
+
+            .panel-logos__label {
+                font-size: 12px
+            }
+
+            .kia-dots {
+                right: 8px
+            }
+
+            .rel-grid {
+                grid-template-columns: 1fr
+            }
+
+            .rel-label {
+                font-size: .95rem;
+                line-height: 1.3;
+                text-align: center
+            }
+
+            .moment-image img {
+                height: auto
+            }
+
+            footer {
+                padding: 28px 14px
+            }
+
+            #top-btn {
+                right: 12px;
+                bottom: 18px
+            }
+
+            /* Further mobile tweaks for moments, label and ombc */
+            .moments-section {
+                padding: 32px 10px 18px
+            }
+
+            .moments-block {
+                padding: 0 !important
+            }
+
+            .moments-block.second-block .block-heading {
+                margin-bottom: 16px
+            }
+
+            .block-heading h3 {
+                font-size: 22px
+            }
+
+            .block-heading p {
+                font-size: 14px
+            }
+
+            .moment-content h4 {
+                font-size: 18px
+            }
+
+            .moment-content p {
+                font-size: 14px
+            }
+
+            .active-label {
+                font-size: 16px;
+                padding: .2rem .5rem
+            }
+
+            .ombc-left {
+                padding: 20px 14px
+            }
+
+            .ombc-h2 {
+                font-size: 1.15rem
+            }
+        }
+
+        /* Very small screens: ensure Joy Beyond the Stadium stacks cleanly */
+        @media (max-width:480px) {
+            .moments-section {
+                padding: 36px 12px
+            }
+
+            .moments-block {
+                margin-bottom: 36px;
+                padding-left: 0;
+                padding-right: 0
+            }
+
+            .moments-block.second-block .block-heading {
+                max-width: none;
+                margin-bottom: 18px
+            }
+
+            .block-heading h3 {
+                font-size: 20px;
+                line-height: 1.15
+            }
+
+            .block-heading p {
+                font-size: 13px
+            }
+
+            .moments-grid {
+                grid-template-columns: 1fr;
+                gap: 14px
+            }
+
+            .moment-card {
+                display: block
+            }
+
+            .moment-image {
+                border-radius: 12px;
+                overflow: hidden;
+                margin-bottom: 14px
+            }
+
+            .moment-image img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16/9;
+                object-fit: cover
+            }
+
+            .moment-content {
+                padding: 6px 4px
+            }
+
+            .moment-content h4 {
+                font-size: 16px;
+                margin-bottom: 8px
+            }
+
+            .moment-content p {
+                font-size: 13px;
+                line-height: 1.6
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ NAV ═══════════════════════════════════════════ -->
+    <nav id="nav">
+        <!-- Kia wordmark -->
+        <img src="./assets/web/logo-kia.png">
+        <div class="nav-center">
+            <a href="#hero" class="nav-link">Home</a>
+            <a href="#power" class="nav-link">Power</a>
+            <a href="#journey" class="nav-link">Journey</a>
+            <a href="#moments" class="nav-link">Moments</a>
+            <a href="#tournaments" class="nav-link">Tournaments</a>
+            <a href="#ombc" class="nav-link">Tomorrow</a>
+        </div>
+        <button type="button" class="nav-toggle" aria-label="Open navigation menu"><span></span></button>
+    </nav>
+
+    <!-- ══ HERO (video bg) ════════════════════════════════ -->
+    <section id="hero">
+        <video id="hero-video" autoplay muted loop playsinline
+            poster="./assets/web/01-kv/fifa-hero-pc.webp">
+            <source src="./assets/web/01-kv/01.mp4" type="video/mp4" />
+        </video>
+        <img id="hero-img" src="./assets/web/01-kv/fifa-hero-pc.webp" alt="FIFA Kia Hero" />
+        <div class="hero-grad"></div>
+        <div class="hero-text">
+            <p class="hero-eyebrow">Partnership</p>
+            <h1 class="hero-h1">FIFA</h1>
+            <p class="hero-tagline">Kia's Movement Meets FIFA's Passion</p>
+        </div>
+    </section>
+
+    <!-- ══ POWER BLOCK — video bg with blur + text overlay ════ -->
+    <section id="power">
+        <video class="power-video" muted playsinline
+            poster="./assets/web/01-kv/fifa-hero-pc.webp">
+            <source src="./assets/web/01-kv/01.mp4" type="video/mp4" />
+        </video>
+        <div class="power-dark-layer"></div>
+        <div class="power-content">
+            <h2 class="power-h2 r">Football has the power to move the world as one.</h2>
+            <div class="power-body r d1">
+                <p>Beyond the pitch, it connects generations and cultures and moments. Within this journey shaped by
+                    FIFA, Kia moves forward as a long-term partner — nurturing both the present and future of the game,
+                    guided by our brand slogan, "Movement that inspires."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ KIA × FIFA — pinned panels with background ═════════ -->
+    <div class="kia-scroll-driver" id="driver">
+        <div class="kia-sticky">
+            <div class="kia-bg"></div>
+
+            <div class="kia-panel panel-quote" id="panel1"></div>
+
+            <div class="kia-panel" id="panel2">
+                <div class="panel-why">
+                    <h2 class="panel-why__title">Why Kia Partners<br>with FIFA</h2>
+                    <div class="panel-why__body">
+                        <p>FIFA has created the world's most powerful stage, bringing people together through football.
+                            Across borders and languages, football has become a global culture — deeply embedded in
+                            everyday life around the world.</p>
+                        <p>This global influence closely aligns with Kia's values: connecting people and the world
+                            through movement. Through its partnership with FIFA, Kia continues to create meaningful
+                            moments that inspire connection and engagement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kia-panel" id="panel3">
+                <div class="panel-logos">
+                    <div class="panel-logos__row">
+                       
+        
+                        <div class="panel-logos__kia">
+                            <img src="./assets/web/02. Reason Why/02_2.png">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation dots -->
+    <div class="kia-dots">
+        <div class="kia-dot" id="dot2"></div>
+        <div class="kia-dot" id="dot3"></div>
+    </div>
+
+    <!-- ===== A LONG JOURNEY WITH FIFA ===== -->
+    <section id="journey" class="journey-section">
+        <div class="journey-card">
+
+            <!-- Background Image -->
+            <div class="journey-bg">
+                <img src="./assets/web/03. History/03_1.jpg" alt="Kia FIFA Journey">
+            </div>
+
+            <!-- Dark Overlay -->
+            <div class="journey-overlay"></div>
+
+            <!-- Content -->
+            <div class="journey-content">
+
+                <!-- Text Wrapper (constrained width) -->
+                <div class="journey-text-wrapper">
+                    <div class="journey-text">
+                        <h2>A Long Journey with FIFA</h2>
+
+                        <p>
+                            Since 2007, as an official FIFA partner, Kia has stood
+                            alongside the passion of football fans around the world.
+                            To help this global celebration reach more people, Kia
+                            has supported tournament operations and mobility in
+                            efficient and responsible ways. Building on this
+                            experience, Kia continues to work with FIFA to help
+                            shape the future of sustainable mobility.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Horizontal Marquee Gallery (full width) -->
+                <div class="journey-gallery">
+                    <div class="journey-marquee-track">
+                        <div class="gallery-item item-1">
+                            <img src="./assets/web/03. History/03_2.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-2">
+                            <img src="./assets/web/03. History/03_3.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-3">
+                            <img src="./assets/web/03. History/03_4.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-4">
+                            <img src="./assets/web/03. History/03_5.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-5">
+                            <img src="./assets/web/03. History/03_6.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-6">
+                            <img src="./assets/web/03. History/03_7.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-1">
+                            <img src="./assets/web/03. History/03_2.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-2">
+                            <img src="./assets/web/03. History/03_3.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-3">
+                            <img src="./assets/web/03. History/03_4.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-4">
+                            <img src="./assets/web/03. History/03_5.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-5">
+                            <img src="./assets/web/03. History/03_6.jpg" alt="">
+                        </div>
+
+                        <div class="gallery-item item-6">
+                            <img src="./assets/web/03. History/03_7.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INSPIRING MOMENTS SECTION ===== -->
+    <section id="moments" class="moments-section">
+
+        <div class="moments-container">
+
+            <!-- Main Title -->
+            <div class="moments-header">
+                <h2>
+                    Inspiring Moments,<br>
+                    Driven by Kia
+                </h2>
+            </div>
+
+            <!-- Block 1 -->
+            <div class="moments-block">
+
+                <div class="block-heading">
+                    <h3>Supporting Football for All</h3>
+
+                    <p>
+                        Kia stands with every generation that loves football,
+                        supporting moments of the game as they unfold on stages
+                        around the world.
+                    </p>
+                </div>
+
+                <div class="moments-grid">
+
+                    <!-- Card -->
+                    <article class="moment-card">
+                        <div class="moment-image">
+                            <img src="./assets/web/04. Activities/04_1.jpg" alt="">
+                        </div>
+
+                        <div class="moment-content">
+                            <h4>Official Vehicle Support</h4>
+
+                            <p>
+                                Across FIFA's international tournaments, Kia has served as the
+                                official mobility partner, ensuring seamless movement for players
+                                and officials. Even behind the scenes, Kia keeps the game moving —
+                                supporting the moments that shape football on the world's biggest stage.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Card -->
+                    <article class="moment-card">
+                        <div class="moment-image">
+                            <img src="./assets/web/04. Activities/04_2.jpg" alt="">
+                        </div>
+
+                        <div class="moment-content">
+                            <h4>Youth and Future Generation Programs</h4>
+
+                            <p>
+                                Kia continues to support FIFA's diverse football stages — from youth
+                                and women's tournaments to futsal and the eWorld Cup — where the future
+                                of the game takes shape. Through this commitment, football becomes a
+                                platform for inclusion, reinforcing the value of a sport that is open to all.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+            <!-- Divider -->
+            <div class="moments-divider"></div>
+
+            <!-- Block 2 -->
+            <div class="moments-block second-block">
+
+                <div class="block-heading">
+                    <h3>Joy Beyond the Stadium</h3>
+
+                    <p>
+                        Kia engages with fans beyond the stadium,
+                        sharing the joy of football as part of everyday life.
+                    </p>
+                </div>
+
+                <div class="moments-grid">
+
+                    <!-- Card -->
+                    <article class="moment-card">
+                        <div class="moment-image">
+                            <img src="./assets/web/04. Activities/04_3.jpg" alt="">
+                        </div>
+
+                        <div class="moment-content">
+                            <h4>FIFA Fan Festival</h4>
+
+                            <p>
+                                The FIFA Fan Festival is a celebratory space where fans come together
+                                beyond the stadium. At the festival, Kia offers mobility-focused
+                                experiences that bring the excitement and culture of football to life.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Card -->
+                    <article class="moment-card">
+                        <div class="moment-image">
+                            <img src="./assets/web/04. Activities/04_4.jpg" alt="">
+                        </div>
+
+                        <div class="moment-content">
+                            <h4>Brand Booth</h4>
+
+                            <p>
+                                Kia's brand booth is a space for meaningful interaction with fans —
+                                where the future of mobility comes to life. Through its EV lineup,
+                                Kia clearly expresses its identity as an electrified brand and its
+                                vision for sustainable mobility.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ══ TOGETHER TOWARD INSPIRATION — centered carousel ═══════ -->
+    <section id="tournaments">
+        <div class="tournaments-card">
+            <h2 class="tc-title">Together, Toward Inspiration</h2>
+            <p class="tc-desc">Beyond individual tournaments, Kia has partnered with numerous international football
+                competitions organized by FIFA. The FIFA World Cup 2026™ marks another meaningful milestone in this
+                journey, continuing a long-standing partnership built on shared values.</p>
+
+            <div class="carousel-container">
+                <button class="nav-btn nav-left" id="prevBtn" aria-label="Previous tournament">
+                    <span>‹</span>
+                </button>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="logo-card" data-name="FIFA World Cup™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/fifa-slide-1.webp"
+                                    alt="FIFA World Cup Logo"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA U-20 World Cup Chile 2025™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_7-1.png"
+                                    alt="FIFA U-20 WC 2025"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA U-17 World Cup Qatar 2025™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_10-1.png"
+                                    alt="FIFA U-17 WC Qatar 2025"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA Futsal Women's WC Philippines 2025™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_9-1.png"
+                                    alt="FIFA Futsal Women's WC"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA Beach Soccer WC Seychelles 2025™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_11-1.png"
+                                    alt="FIFA Beach Soccer WC"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA Women's World Cup 2023™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_1-1.png"
+                                    alt="FIFA Women's World Cup"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA World Cup 2026™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_2-1.png"
+                                    alt="FIFA World Cup 2026"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA Women's WC Morocco 2025™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_10-1.png"
+                                    alt="FIFA Women's WC Morocco"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA U-20 WC Colombia 2024™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_3-1.png"
+                                    alt="FIFA U-20 WC Colombia"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA Intercontinental Cup Qatar 2024™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_4-1.png"
+                                    alt="FIFA Intercontinental Cup"></div>
+                        </div>
+                        <div class="logo-card" data-name="FIFA Futsal WC Uzbekistan 2024™">
+                            <div class="logo-img"><img
+                                    src="./assets/web/05. Tournaments/05_5-1.png"
+                                    alt="FIFA Futsal WC Uzbekistan"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="nav-btn nav-right" id="nextBtn" aria-label="Next tournament">
+                    <span>›</span>
+                </button>
+            </div>
+
+            <div class="label-wrapper">
+                <div class="active-label" id="activeTournamentLabel">FIFA World Cup™</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ OMBC FEATURE — dark card ══════════════════════ -->
+    <section id="ombc">
+        <div class="ombc-card">
+            <div class="ombc-left rl">
+                <p class="ombc-cat">FIFA World Cup™</p>
+                <h2 class="ombc-h2">Tomorrow's Legends onto the 2026 FIFA World Cup™ Stage: The Kia OMBC</h2>
+                <p class="ombc-body">The Official Match Ball Carriers (OMBC) are children who dream of becoming future
+                    football stars. As an official program of the FIFA World Cup, they walk onto the pitch alongside the
+                    players and hand the official match ball to the referee — marking the opening moment of each match
+                    at the 2026 FIFA World Cup™.</p>
+                <a href="https://worldwide.kia.com/en/brand/brand-stories/official-match-ball-carrier/"
+                    class="btn-ghost" target="_blank">
+                    Learn more
+                    <svg width="14" height="10" viewBox="0 0 20 12" fill="none" stroke="currentColor"
+                        stroke-width="1.8">
+                        <line x1="0" y1="6" x2="16" y2="6" />
+                        <polyline points="10 0 18 6 10 12" />
+                    </svg>
+                </a>
+            </div>
+            <div class="ombc-right rr">
+                <img src="./assets/web/06. OMBC CTA/06.jpg"
+                    alt="Official Match Ball Carrier" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ OUTRO — stadium with text over ════════════════ -->
+    <section id="outro">
+        <img class="outro-bg" src="./assets/web/07. Outro/07.jpg" alt="Football stadium" />
+        <div class="outro-content">
+            <p class="outro-quote r">
+                Through football, Kia connects with fans around the world, sharing emotion and inspiration. Believing in
+                the true power of inspiration that sport delivers, Kia moves forward — toward sustainability and
+                innovation.
+            </p>
+            <h2 class="outro-big r d2">
+                Beyond the game, Kia brings greater possibilities and lasting value to the world.
+            </h2>
+        </div>
+    </section>
+
+    <!-- ══ RELATED — dark ════════════════════════════════ -->
+    <section id="related">
+        <div class="rel-inner">
+            <p class="rel-label r">Stay Inspired</p>
+            <div class="rel-grid">
+                <div class="rel-card r d1">
+                    <div class="rel-card-img"><img
+                            src="./assets/web/news/financial_banner_4.webp"
+                            alt="Australian Open" /></div>
+                    <div class="rel-card-body">
+                        <p class="rel-card-cat">Australian Open</p>
+                        <p class="rel-card-title">Kia x Australian open, the value of movement beyond victory</p>
+                    </div>
+                </div>
+                <div class="rel-card r d2">
+                    <div class="rel-card-img"><img
+                            src="./assets/web/news/financial_banner_6.webp"
+                            alt="Social Impact" /></div>
+                    <div class="rel-card-body">
+                        <p class="rel-card-cat">Social Impact</p>
+                        <p class="rel-card-title">Towards a sustainable tomorrow</p>
+                    </div>
+                </div>
+                <div class="rel-card r d3">
+                    <div class="rel-card-img"><img
+                            src="./assets/web/news/financial_banner_28.webp"
+                            alt="OMBC" /></div>
+                    <div class="rel-card-body">
+                        <p class="rel-card-cat">FIFA Official Match Ball Carrier</p>
+                        <p class="rel-card-title">The 49th team creating the opening moment of the FIFA World Cup 2026™
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ════════════════════════════════════════ -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+               <img src="./assets/web/logo-kia.png">
+                <div>
+                    <p class="footer-col-title">Modèles</p>
+                    <ul class="footer-links">
+                        <li><a href="https://www.kia.tn/modele/kia-seltos">Nouveau Kia Seltos</a></li>
+                        <li><a href="https://www.kia.tn/modele/kia-picanto">Picanto</a></li>
+                        <li><a href="https://www.kia.tn/modele/kia_sonet">Kia Sonet</a></li>
+                        <li><a href="https://www.kia.tn/modele/kia-ev6">Kia EV6</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-col-title">Univers Kia</p>
+                    <ul class="footer-links">
+                        <li><a href="https://www.kia.tn/propos-de-kia">A propos de Kia</a></li>
+                        <li><a href="https://www.kia.tn/philosophie">Innovation</a></li>
+                        <li><a href="https://www.kia.tn/philosophie">Philosophie</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-col-title">Acheter une Kia</p>
+                    <ul class="footer-links">
+                        <li><a href="https://www.kia.tn/societe-ou-personne-morale">Particuliers</a></li>
+                        <li><a href="https://www.kia.tn/societe-ou-personne-morale">Société ou personne morale</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-col-title">Footer Menu</p>
+                    <ul class="footer-links">
+                        <li><a href="https://www.kia.tn/reseau">Réseau Kia</a></li>
+                        <li><a href="https://www.kia.tn/acheter-une-kia">Acheter une Kia</a></li>
+                        <li><a href="https://www.kia.tn/faire-un-essai">Faire un essai</a></li>
+                        <li><a href="https://www.kia.tn/demander_un_devis">Demander un devis</a></li>
+                        <li><a href="https://www.kia.tn/contactez-nous">Contactez-nous</a></li>
+                        <li><a href="https://www.kia.tn/actualites">Actualités</a></li>
+                        <li><a href="https://www.kia.tn/services">Service</a></li>
+                        <li><a
+                                href="https://docs.google.com/forms/d/1WKak6n5s0xcAhXVjbhoLMwmhYvgMSbh_iqHhL0LkD3Y/viewform?gxids=7628&edit_requested=true">Showroom
+                                en ligne</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <p class="footer-legal" style="margin-top:32px">
+                © 2021 Kia MOTORS CORP. - TOUS DROITS RÉSERVÉS.
+            </p>
+        </div>
+    </footer>
+
+    <!-- scroll to top -->
+    <div id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 4l-8 8h5v8h6v-8h5z" />
+        </svg>
+    </div>
+
+    <script>
+        /* ── VIDEO FALLBACK ─────────────── */
+        const vid = document.getElementById('hero-video');
+        const img = document.getElementById('hero-img');
+        vid.play().catch(() => { vid.style.display = 'none'; img.style.display = 'block' });
+        vid.addEventListener('error', () => { vid.style.display = 'none'; img.style.display = 'block' });
+
+        /* ── NAV — transparent → solid on scroll ────────────── */
+        const nav = document.getElementById('nav');
+        const navLinks = nav.querySelectorAll('.nav-link');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLogoText = nav.querySelector('.kia-text');
+        const navSearch = nav.querySelector('.nav-search');
+        function updateNav() {
+            const solid = window.scrollY > 80;
+            nav.classList.toggle('solid', solid);
+            navLinks.forEach(l => l.style.color = solid ? '#1a1a1a' : '#fff');
+            if (navLogoText) navLogoText.setAttribute('fill', solid ? '#1a1a1a' : 'white');
+            if (navSearch) navSearch.setAttribute('stroke', solid ? '#1a1a1a' : 'white');
+        }
+        if (navToggle) {
+            navToggle.addEventListener('click', () => nav.classList.toggle('open'));
+        }
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav.classList.contains('open')) nav.classList.remove('open');
+            });
+        });
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+
+        /* ── SCROLL REVEAL ─────────────────────────────────── */
+        const revs = document.querySelectorAll('.r,.rl,.rr');
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target) } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        revs.forEach(el => io.observe(el));
+
+        /* ── KIA × FIFA PINNED PANELS SCRIPT ─────────────────── */
+        const driver = document.getElementById('driver');
+        const panel1 = document.getElementById('panel1');
+        const panel2 = document.getElementById('panel2');
+        const panel3 = document.getElementById('panel3');
+
+        const panels = [panel1, panel2, panel3];
+        const dots = Array.from(document.querySelectorAll('.kia-dot'));
+        if (dots[0]) dots[0].classList.add('active');
+
+        let currentPanel = 0;
+
+        function setPanel(idx) {
+            if (idx === currentPanel) return;
+            currentPanel = idx;
+
+            panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+
+        function onScroll() {
+            const rect = driver.getBoundingClientRect();
+            const total = driver.offsetHeight - window.innerHeight;
+            const scrolled = -rect.top;
+            const progress = Math.max(0, Math.min(1, scrolled / total));
+
+            if (progress < 0.33) setPanel(0);
+            else if (progress < 0.66) setPanel(1);
+            else setPanel(2);
+        }
+
+        panel1.classList.add('active');
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        /* ── TOURNAMENT CAROUSEL (centered active slide) ─── */
+        (function () {
+            const track = document.getElementById('carouselTrack');
+            const prevButton = document.getElementById('prevBtn');
+            const nextButton = document.getElementById('nextBtn');
+            const activeLabelSpan = document.getElementById('activeTournamentLabel');
+            const cards = Array.from(document.querySelectorAll('.logo-card'));
+            const totalCards = cards.length;
+            let currentIndex = 0;
+            let autoScrollInterval = null;
+            const AUTO_INTERVAL_MS = 2800;
+
+            function updateCarouselPosition(animate = true) {
+                if (!track || cards.length === 0) return;
+                const cardElement = cards[0];
+                const cardRect = cardElement.getBoundingClientRect();
+                const cardWidth = cardRect.width;
+                const gap = parseFloat(getComputedStyle(track).gap) || 32;
+                const fullCardWidth = cardWidth + gap;
+                const wrapper = document.querySelector('.carousel-wrapper');
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const wrapperWidth = wrapperRect.width;
+                const translateX = (wrapperWidth / 2) - (cardWidth / 2) - (currentIndex * fullCardWidth);
+                track.style.transition = animate ? 'transform .55s cubic-bezier(0.2,0.9,0.4,1.1)' : 'none';
+                track.style.transform = `translateX(${translateX}px)`;
+                updateActiveCardStyles();
+            }
+
+            function updateActiveCardStyles() {
+                cards.forEach((card, idx) => {
+                    if (idx === currentIndex) {
+                        card.classList.add('center-active');
+                        activeLabelSpan.textContent = card.getAttribute('data-name') || 'FIFA Tournament';
+                    } else {
+                        card.classList.remove('center-active');
+                    }
+                });
+            }
+
+            function goToIndex(newIndex, animate = true) {
+                if (newIndex < 0) newIndex = totalCards - 1;
+                if (newIndex >= totalCards) newIndex = 0;
+                currentIndex = newIndex;
+                updateCarouselPosition(animate);
+            }
+
+            function nextSlide() { goToIndex(currentIndex + 1, true) }
+            function prevSlide() { goToIndex(currentIndex - 1, true) }
+
+            function startAutoScroll() {
+                if (autoScrollInterval) clearInterval(autoScrollInterval);
+                autoScrollInterval = setInterval(() => nextSlide(), AUTO_INTERVAL_MS);
+            }
+
+            function stopAutoScroll() {
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = null;
+                }
+            }
+
+            function resetAutoTimer() { stopAutoScroll(); startAutoScroll(); }
+
+            function bindEvents() {
+                if (prevButton) {
+                    prevButton.addEventListener('click', e => { e.preventDefault(); prevSlide(); resetAutoTimer(); });
+                }
+                if (nextButton) {
+                    nextButton.addEventListener('click', e => { e.preventDefault(); nextSlide(); resetAutoTimer(); });
+                }
+                cards.forEach((card, idx) => {
+                    card.addEventListener('click', () => {
+                        if (idx !== currentIndex) {
+                            currentIndex = idx;
+                            updateCarouselPosition(true);
+                            resetAutoTimer();
+                        } else {
+                            resetAutoTimer();
+                        }
+                    });
+                });
+                const container = document.querySelector('.carousel-container');
+                if (container) {
+                    container.addEventListener('mouseenter', () => stopAutoScroll());
+                    container.addEventListener('mouseleave', () => startAutoScroll());
+                }
+            }
+
+            let resizeTimer;
+            function handleResize() {
+                if (resizeTimer) clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (track) {
+                        const originalTransition = track.style.transition;
+                        track.style.transition = 'none';
+                        updateCarouselPosition(false);
+                        track.offsetHeight;
+                        track.style.transition = originalTransition;
+                    }
+                }, 150);
+            }
+
+            function waitForImagesAndInit() {
+                const allImages = document.querySelectorAll('.logo-img img');
+                let imagesLoaded = 0;
+                const totalImgs = allImages.length;
+                if (totalImgs === 0) { finalInit(); return; }
+                function onImageLoad() {
+                    imagesLoaded++;
+                    if (imagesLoaded === totalImgs) finalInit();
+                }
+                allImages.forEach(img => {
+                    if (img.complete) onImageLoad();
+                    else {
+                        img.addEventListener('load', onImageLoad);
+                        img.addEventListener('error', onImageLoad);
+                    }
+                });
+                function finalInit() {
+                    currentIndex = 0;
+                    updateActiveCardStyles();
+                    updateCarouselPosition(false);
+                    startAutoScroll();
+                    window.addEventListener('resize', handleResize);
+                }
+            }
+
+            function handleVisibilityChange() {
+                if (document.hidden) stopAutoScroll();
+                else startAutoScroll();
+            }
+
+            function init() {
+                bindEvents();
+                waitForImagesAndInit();
+                document.addEventListener('visibilitychange', handleVisibilityChange);
+            }
+
+            init();
+        })();
+
+        /* ── SCROLL-TO-TOP ─────────────────────────────────── */
+        const topBtn = document.getElementById('top-btn');
+        window.addEventListener('scroll', () => topBtn.classList.toggle('show', scrollY > 400), { passive: true });
+
+        /* ── HERO PARALLAX ─────────────────────────────────── */
+        window.addEventListener('scroll', () => {
+            const y = scrollY * 0.25;
+            (vid.style.display !== 'none' ? vid : img).style.transform = `translateY(${y}px) scale(1.05)`;
+        }, { passive: true });
+
+        /* ── POWER BLOCK REVEAL ───────────────────────────────── */
+        const powerSection = document.getElementById('power');
+        const powerObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    powerSection.classList.add('visible');
+                    powerObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+        powerObserver.observe(powerSection);
+
+    </script>
+</body>
+
+</html>
