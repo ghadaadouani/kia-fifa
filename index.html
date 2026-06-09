@@ -80,6 +80,25 @@
             height: auto
         }
 
+        .nav-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* target the img elements specifically so these rules beat the general .nav-logo img selector */
+        .nav-logo img.nav-logo--black {
+            display: none;
+        }
+
+        #nav.solid .nav-logo img.nav-logo--black {
+            display: block;
+        }
+
+        #nav.solid .nav-logo img.nav-logo--white {
+            display: none;
+        }
+
         .nav-logo path {
             fill: #fff;
             transition: fill .3s
@@ -1829,7 +1848,7 @@
             }
 
             .rel-inner {
-                padding: 0 12px
+                padding: 40px 12px
             }
 
             .rel-grid {
@@ -1922,6 +1941,33 @@
 
             .ombc-right img {
                 height: auto
+            }
+            /* Journey: use mobile background image and hide inline img on small screens */
+            .journey-bg {
+                background-image: url('./assets/mobile/03.\ History/03_1.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+
+            .journey-bg img {
+                display: none;
+            }
+            /* Make journey text white on mobile */
+            .journey-text,
+            .journey-text h2,
+            .journey-text p {
+                color: #000000;
+            }
+            /* Make Kia logo smaller on mobile */
+            .panel-logos__kia {
+                height: clamp(42px, 70px, 80px);
+                max-width: 100%;
+            }
+
+            .panel-logos__kia img {
+                height: 100%;
+                width: auto;
+                display: block;
             }
         }
 
@@ -2059,7 +2105,7 @@
             }
 
             .ombc-left {
-                padding: 20px 14px
+                padding: 40px 24px
             }
 
             .ombc-h2 {
@@ -2137,7 +2183,10 @@
     <!-- ══ NAV ═══════════════════════════════════════════ -->
     <nav id="nav">
         <!-- Kia wordmark -->
-        <img src="./assets/web/logo-kia.png">
+        <a class="nav-logo" href="#">
+            <img class="nav-logo--white" src="./assets/web/logo-kia.png" alt="Kia logo">
+            <img class="nav-logo--black" src="./assets/web/kia-logo-black.webp" alt="Kia logo black">
+        </a>
         <div class="nav-center">
             <a href="#hero" class="nav-link">Home</a>
             <a href="#power" class="nav-link">Power</a>
@@ -2158,9 +2207,9 @@
         <img id="hero-img" src="./assets/web/01-kv/fifa-hero-pc.webp" alt="FIFA Kia Hero" />
         <div class="hero-grad"></div>
         <div class="hero-text">
-            <p class="hero-eyebrow">Partnership</p>
+            <p class="hero-eyebrow">Partenariat</p>
             <h1 class="hero-h1">FIFA</h1>
-            <p class="hero-tagline">Kia's Movement Meets FIFA's Passion</p>
+            <p class="hero-tagline">Le mouvement Kia rencontre la passion de la FIFA.</p>
         </div>
     </section>
 
@@ -2172,11 +2221,10 @@
         </video>
         <div class="power-dark-layer"></div>
         <div class="power-content">
-            <h2 class="power-h2 r">Football has the power to move the world as one.</h2>
+            <h2 class="power-h2 r">Le football a le pouvoir de rassembler le monde entier</h2>
             <div class="power-body r d1">
-                <p>Beyond the pitch, it connects generations and cultures and moments. Within this journey shaped by
-                    FIFA, Kia moves forward as a long-term partner — nurturing both the present and future of the game,
-                    guided by our brand slogan, "Movement that inspires."</p>
+                <p>Au-delà du terrain, il relie les générations, les cultures et les événements.
+Dans le cadre de cette aventure organisée par la FIFA, Kia s'engage en tant que partenaire de longue durée, en soutenant à la fois le présent et l'avenir de ce sport, guidée par notre promesse : "Du mouvement vient l'inspiration."</p>
             </div>
         </div>
     </section>
@@ -2190,14 +2238,16 @@
 
             <div class="kia-panel" id="panel2">
                 <div class="panel-why">
-                    <h2 class="panel-why__title">Why Kia Partners<br>with FIFA</h2>
+                    <h2 class="panel-why__title">Pourquoi Kia s'associe à la FIFA.</h2>
                     <div class="panel-why__body">
-                        <p>FIFA has created the world's most powerful stage, bringing people together through football.
-                            Across borders and languages, football has become a global culture — deeply embedded in
-                            everyday life around the world.</p>
-                        <p>This global influence closely aligns with Kia's values: connecting people and the world
-                            through movement. Through its partnership with FIFA, Kia continues to create meaningful
-                            moments that inspire connection and engagement.</p>
+                        <p>La FIFA a créé la plus grande scène mondiale, rassemblant les gens grâce au football. Au-delà des frontières et
+                            des langues, le football est devenu une culture mondiale, profondément ancrée dans la vie quotidienne partout
+                            dans le monde.</p>
+                            <p>
+                            Cette influence mondiale correspond parfaitement aux valeurs de Kia: relier les gens et le monde par le
+                            mouvement. Grâce à son partenariat avec la FIFA, Kia continue de créer des moments marquants qui favorisent les
+                            liens et l'engagement.
+                            nires</p>
                     </div>
                 </div>
             </div>
@@ -2241,16 +2291,9 @@
                 <!-- Text Wrapper (constrained width) -->
                 <div class="journey-text-wrapper">
                     <div class="journey-text">
-                        <h2>A Long Journey with FIFA</h2>
+                        <h2>Un engagement de longue date auprès de la FIFA.</h2>
 
-                        <p>
-                            Since 2007, as an official FIFA partner, Kia has stood
-                            alongside the passion of football fans around the world.
-                            To help this global celebration reach more people, Kia
-                            has supported tournament operations and mobility in
-                            efficient and responsible ways. Building on this
-                            experience, Kia continues to work with FIFA to help
-                            shape the future of sustainable mobility.
+                        <p>Depuis 2010, en tant que partenaire officiel de la FIFA, Kia partage la passion des fans de football du monde entier. Afin de permettre à cet événement mondial de toucher un public toujours plus large, Kia a apporté son soutien à l'organisation des tournois et à la mobilité de manière efficace et responsable. Forte de cette expérience, Kia continue de collaborer avec la FIFA pour contribuer à façonner l'avenir de la mobilité durable.
                         </p>
                     </div>
                 </div>
@@ -2320,8 +2363,8 @@
             <!-- Main Title -->
             <div class="moments-header">
                 <h2>
-                    Inspiring Moments,<br>
-                    Driven by Kia
+                    Des moments inspirants, <br>avec Kia.
+
                 </h2>
             </div>
 
@@ -2329,12 +2372,12 @@
             <div class="moments-block">
 
                 <div class="block-heading">
-                    <h3>Supporting Football for All</h3>
+                    <h3>Soutenir le football pour tous.
+</h3>
 
                     <p>
-                        Kia stands with every generation that loves football,
-                        supporting moments of the game as they unfold on stages
-                        around the world.
+                        Kia accompagne toutes les générations passionnées de football en soutenant les moments forts de ce sport, partout dans le monde.
+
                     </p>
                 </div>
 
@@ -2347,13 +2390,13 @@
                         </div>
 
                         <div class="moment-content">
-                            <h4>Official Vehicle Support</h4>
+                            <h4>Partenaire officiel de la mobilité.
+</h4>
 
                             <p>
-                                Across FIFA's international tournaments, Kia has served as the
-                                official mobility partner, ensuring seamless movement for players
-                                and officials. Even behind the scenes, Kia keeps the game moving —
-                                supporting the moments that shape football on the world's biggest stage.
+                                Lors des tournois internationaux de la FIFA, Kia a été le partenaire officiel de la mobilité, garantissant des déplacements fluides aux joueurs et aux officiels. Même en coulisses, Kia fait avancer le jeu en soutenant les moments qui marquent l'histoire du football sur la plus grande scène mondiale.
+
+.
                             </p>
                         </div>
                     </article>
@@ -2365,13 +2408,13 @@
                         </div>
 
                         <div class="moment-content">
-                            <h4>Youth and Future Generation Programs</h4>
+                            <h4>Programmes pour la jeunesse et les générations futures.
+</h4>
 
                             <p>
-                                Kia continues to support FIFA's diverse football stages — from youth
-                                and women's tournaments to futsal and the eWorld Cup — where the future
-                                of the game takes shape. Through this commitment, football becomes a
-                                platform for inclusion, reinforcing the value of a sport that is open to all.
+                                Kia continue de soutenir les différentes instances du football de la FIFA – des tournois juniors et féminins au futsal et à l’eWorld Cup – où se dessine l’avenir de ce sport. Grâce à cet engagement, le football devient une plateforme d’inclusion, renforçant la valeur d’un sport ouvert à tous.
+
+
                             </p>
                         </div>
                     </article>
@@ -2387,11 +2430,12 @@
             <div class="moments-block second-block">
 
                 <div class="block-heading">
-                    <h3>Joy Beyond the Stadium</h3>
+                    <h3>La joie au-delà du stade.
+</h3>
 
                     <p>
-                        Kia engages with fans beyond the stadium,
-                        sharing the joy of football as part of everyday life.
+                        Kia interagit avec les fans au-delà du stade, partageant la joie du football comme partie intégrante de la vie quotidienne.
+
                     </p>
                 </div>
 
@@ -2404,12 +2448,13 @@
                         </div>
 
                         <div class="moment-content">
-                            <h4>FIFA Fan Festival</h4>
+                            <h4>FIFA Fan Festival.
+</h4>
 
                             <p>
-                                The FIFA Fan Festival is a celebratory space where fans come together
-                                beyond the stadium. At the festival, Kia offers mobility-focused
-                                experiences that bring the excitement and culture of football to life.
+                                Le FIFA Fan Festival est un espace de célébration où les fans se retrouvent au-delà du stade. Lors du festival, Kia propose des expériences axées sur la mobilité qui donnent vie à l’enthousiasme et à la culture du football.
+
+
                             </p>
                         </div>
                     </article>
@@ -2421,13 +2466,13 @@
                         </div>
 
                         <div class="moment-content">
-                            <h4>Brand Booth</h4>
+                            <h4>Stand de la marque.
+</h4>
 
                             <p>
-                                Kia's brand booth is a space for meaningful interaction with fans —
-                                where the future of mobility comes to life. Through its EV lineup,
-                                Kia clearly expresses its identity as an electrified brand and its
-                                vision for sustainable mobility.
+                               Le stand de Kia est un espace dédié à des interactions enrichissantes avec les passionnés, où l'avenir de la mobilité prend vie. À travers sa gamme de véhicules électriques, Kia affirme clairement son identité de marque électrifiée et sa vision d'une mobilité durable.
+
+
                             </p>
                         </div>
                     </article>
@@ -2443,10 +2488,10 @@
     <!-- ══ TOGETHER TOWARD INSPIRATION — centered carousel ═══════ -->
     <section id="tournaments">
         <div class="tournaments-card">
-            <h2 class="tc-title">Together, Toward Inspiration</h2>
-            <p class="tc-desc">Beyond individual tournaments, Kia has partnered with numerous international football
-                competitions organized by FIFA. The FIFA World Cup 2026™ marks another meaningful milestone in this
-                journey, continuing a long-standing partnership built on shared values.</p>
+            <h2 class="tc-title">Ensemble, vers l'inspiration.
+</h2>
+            <p class="tc-desc">Au-delà des tournois individuels, Kia s'est associée à de nombreuses compétitions internationales de football organisées par la FIFA. La Coupe du Monde de la FIFA 2026™ marque une nouvelle étape importante dans ce parcours, prolongeant un partenariat de longue date fondé sur des valeurs communes.
+</p>
 
             <div class="carousel-container">
                 <button class="nav-btn nav-left" id="prevBtn" aria-label="Previous tournament">
@@ -2460,54 +2505,34 @@
                                     alt="FIFA World Cup Logo"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA U-20 World Cup Chile 2025™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_7-1.png"
-                                    alt="FIFA U-20 WC 2025"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_7-1.png" alt="FIFA U-20 WC 2025"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA U-17 World Cup Qatar 2025™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_10-1.png"
-                                    alt="FIFA U-17 WC Qatar 2025"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_10-1.png" alt="FIFA U-17 WC Qatar 2025"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA Futsal Women's WC Philippines 2025™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_9-1.png"
-                                    alt="FIFA Futsal Women's WC"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_9-1.png" alt="FIFA Futsal Women's WC"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA Beach Soccer WC Seychelles 2025™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_11-1.png"
-                                    alt="FIFA Beach Soccer WC"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_11-1.png" alt="FIFA Beach Soccer WC"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA Women's World Cup 2023™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_1-1.png"
-                                    alt="FIFA Women's World Cup"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_1-1.png" alt="FIFA Women's World Cup"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA World Cup 2026™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_2-1.png"
-                                    alt="FIFA World Cup 2026"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_2-1.png" alt="FIFA World Cup 2026"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA Women's WC Morocco 2025™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_10-1.png"
-                                    alt="FIFA Women's WC Morocco"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_10-1.png" alt="FIFA Women's WC Morocco"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA U-20 WC Colombia 2024™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_3-1.png"
-                                    alt="FIFA U-20 WC Colombia"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_3-1.png" alt="FIFA U-20 WC Colombia"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA Intercontinental Cup Qatar 2024™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_4-1.png"
-                                    alt="FIFA Intercontinental Cup"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_4-1.png" alt="FIFA Intercontinental Cup"></div>
                         </div>
                         <div class="logo-card" data-name="FIFA Futsal WC Uzbekistan 2024™">
-                            <div class="logo-img"><img
-                                    src="./assets/web/05. Tournaments/05_5-1.png"
-                                    alt="FIFA Futsal WC Uzbekistan"></div>
+                            <div class="logo-img"><img src="./assets/web/05. Tournaments/05_5-1.png" alt="FIFA Futsal WC Uzbekistan"></div>
                         </div>
                     </div>
                 </div>
@@ -2527,12 +2552,11 @@
         <div class="ombc-card">
             <div class="ombc-left rl">
                 <p class="ombc-cat">FIFA World Cup™</p>
-                <h2 class="ombc-h2">Tomorrow's Legends onto the 2026 FIFA World Cup™ Stage: The Kia OMBC</h2>
-                <p class="ombc-body">The Official Match Ball Carriers (OMBC) are children who dream of becoming future
-                    football stars. As an official program of the FIFA World Cup, they walk onto the pitch alongside the
-                    players and hand the official match ball to the referee — marking the opening moment of each match
-                    at the 2026 FIFA World Cup™.</p>
-                <a href="https://worldwide.kia.com/en/brand/brand-stories/official-match-ball-carrier/"
+                <h2 class="ombc-h2">Les légendes de demain font leur entrée sur le terrain : les OMBC.
+</h2>
+                <p class="ombc-body">Les porteurs officiels du ballon de match (OMBC) sont des enfants qui rêvent de devenir les futures stars du football. Lorsqu’ils entrent sur le terrain aux côtés des joueurs et remettent le ballon officiel à l’arbitre, c’est entre leurs mains que s’ouvre le prochain chapitre du football et que naît l’inspiration.
+</p>
+                <!--<a href="https://worldwide.kia.com/en/brand/brand-stories/official-match-ball-carrier/"
                     class="btn-ghost" target="_blank">
                     Learn more
                     <svg width="14" height="10" viewBox="0 0 20 12" fill="none" stroke="currentColor"
@@ -2540,11 +2564,10 @@
                         <line x1="0" y1="6" x2="16" y2="6" />
                         <polyline points="10 0 18 6 10 12" />
                     </svg>
-                </a>
+                </a>-->
             </div>
             <div class="ombc-right rr">
-                <img src="./assets/web/06. OMBC CTA/06.jpg"
-                    alt="Official Match Ball Carrier" />
+                <img src="./assets/web/06. OMBC CTA/06.jpg" alt="Official Match Ball Carrier" />
             </div>
         </div>
     </section>
@@ -2554,12 +2577,14 @@
         <img class="outro-bg" src="./assets/web/07. Outro/07.jpg" alt="Football stadium" />
         <div class="outro-content">
             <p class="outro-quote r">
-                Through football, Kia connects with fans around the world, sharing emotion and inspiration. Believing in
-                the true power of inspiration that sport delivers, Kia moves forward — toward sustainability and
-                innovation.
+                À travers le football, Kia tisse des liens avec les fans
+du monde entier, partageant avec eux émotions et inspiration.
+Convaincue du véritable pouvoir d'inspiration
+que procure le sport, Kia va de l'avant, vers
+le développement durable et l'innovation.
             </p>
-            <h2 class="outro-big r d2">
-                Beyond the game, Kia brings greater possibilities and lasting value to the world.
+            <h2 class="outro-big r d2">Au-delà du jeu, Kia offre au monde de nouvelles possibilités
+et une valeur durable.
             </h2>
         </div>
     </section>
@@ -2567,7 +2592,9 @@
     <!-- ══ RELATED — dark ════════════════════════════════ -->
     <section id="related">
         <div class="rel-inner">
-            <p class="rel-label r">Stay Inspired</p>
+            <p class="rel-label r">Restez inspiré.
+
+</p>
             <div class="rel-grid">
                 <div class="rel-card r d1">
                     <div class="rel-card-img"><img
@@ -2575,7 +2602,7 @@
                             alt="Australian Open" /></div>
                     <div class="rel-card-body">
                         <p class="rel-card-cat">Australian Open</p>
-                        <p class="rel-card-title">Kia x Australian open, the value of movement beyond victory</p>
+                        <p class="rel-card-title">Kia x Australian Open, la valeur du mouvement au-delà de la victoire</p>
                     </div>
                 </div>
                 <div class="rel-card r d2">
@@ -2583,8 +2610,8 @@
                             src="./assets/web/news/financial_banner_6.webp"
                             alt="Social Impact" /></div>
                     <div class="rel-card-body">
-                        <p class="rel-card-cat">Social Impact</p>
-                        <p class="rel-card-title">Towards a sustainable tomorrow</p>
+                        <p class="rel-card-cat">Impact social</p>
+                        <p class="rel-card-title">Vers un avenir durable</p>
                     </div>
                 </div>
                 <div class="rel-card r d3">
@@ -2592,8 +2619,8 @@
                             src="./assets/web/news/financial_banner_28.webp"
                             alt="OMBC" /></div>
                     <div class="rel-card-body">
-                        <p class="rel-card-cat">FIFA Official Match Ball Carrier</p>
-                        <p class="rel-card-title">The 49th team creating the opening moment of the FIFA World Cup 2026™
+                        <p class="rel-card-cat">Porteur officiel du ballon des matchs de la FIFA</p>
+                        <p class="rel-card-title">La 49ᵉ équipe créant le moment d’ouverture de la FIFA World Cup 2026™
                         </p>
                     </div>
                 </div>
